@@ -1,0 +1,13 @@
+# Rezolvare — Mediu de Testare Multi-Serviciu cu Docker Compose
+
+## Dovada func?ionãrii
+Tabelul `tests` creat cu succes în baza de date `qa_db` (prin Adminer):
+
+![Tabelul tests creat în qa_db](adminer-tests.png)
+
+## De ce este important flag-ul `-v` la `docker compose down`
+`docker compose down -v` ?terge, pe lângã containere ?i re?ea, ?i **volumele**
+(aici `db-data`), adicã toate datele bazei. Pentru QA este esen?ial pentru cã
+fiecare rulare de teste porne?te dintr-un mediu **curat ?i identic**, fãrã date
+rãmase de la testele anterioare care ar „polua" rezultatele. Astfel testele
+devin reproductibile ?i deterministe.
